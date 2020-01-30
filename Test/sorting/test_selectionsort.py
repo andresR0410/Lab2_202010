@@ -22,17 +22,17 @@
 
 import unittest 
 import config 
-from Sorting import insertionsort as sort
+from Sorting import selectionsort as sort
 from DataStructures import listiterator as it
 from ADT import list as slt
 import copy 
 
 
 
-class insertionSortTest (unittest.TestCase):
+class selectionSortTest (unittest.TestCase):
 
-    list_type = 'ARRAY_LIST'
-    #list_type = 'SINGLE_LINKED_LIST'
+    #list_type = 'ARRAY_LIST'
+    list_type = 'SINGLE_LINKED_LIST'
 
     def setUp (self):
         self.book1 = {'book_id':'1', 'book_title':'Title 1', 'author':'author 1'}
@@ -96,7 +96,7 @@ class insertionSortTest (unittest.TestCase):
             #result = "".join(str(key) + ": " + str(value) + ",  " for key, value in element.items())
             #print (result)
         print ("Sorting ....")
-        sort.insertionSort (self.lst, self.less)
+        sort.selectionSort (self.lst, self.less)
         self.assertTrue(self.verifySorting(self.lst, self.less))
     
 
@@ -125,7 +125,7 @@ class insertionSortTest (unittest.TestCase):
             result = "".join(str(key) + ": " + str(value) + ",  " for key, value in element.items())
             print (result)
         print ("sorting ....")
-        sort.insertionSort (self.lst, self.less)
+        sort.selectionSort (self.lst, self.less)
         self.assertTrue(self.verifySorting(self.lst, self.less))
 
     def test_orderedElements (self):
@@ -151,7 +151,7 @@ class insertionSortTest (unittest.TestCase):
             result = "".join(str(key) + ": " + str(value) + ",  " for key, value in element.items())
             print (result)
         print ("sorting ....")
-        sort.insertionSort (self.lst, self.less)
+        sort.selectionSort (self.lst, self.less)
         self.assertTrue(self.verifySorting(self.lst, self.less))
 
     def test_oneElement (self):
@@ -168,7 +168,7 @@ class insertionSortTest (unittest.TestCase):
             result = "".join(str(key) + ": " + str(value) + ",  " for key, value in element.items())
             print (result)
         print ("sorting ....")
-        sort.insertionSort (self.lst, self.less)
+        sort.selectionSort (self.lst, self.less)
         iterator = it.newIterator(self.lst)
         self.assertTrue(self.verifySorting(self.lst, self.less))
 
@@ -201,7 +201,7 @@ class insertionSortTest (unittest.TestCase):
             result = "".join(str(key) + ": " + str(value) + ",  " for key, value in element.items())
             print (result)
         print ("sorting ....")
-        sort.insertionSort (self.lst, self.less)
+        sort.selectionSort (self.lst, self.less)
         self.assertTrue(self.verifySorting(self.lst, self.less))
 
 
