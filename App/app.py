@@ -32,9 +32,9 @@ import csv
 from ADT import list as lt
 from DataStructures import listiterator as it
 from DataStructures import liststructure as lt
-
+import Sorting as st 
 from time import process_time 
-
+import Test as ts
 
 def loadCSVFile (file, sep=";"):
     """
@@ -54,7 +54,6 @@ def loadCSVFile (file, sep=";"):
     print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return lst
 
-
 def printMenu():
     """
     Imprime el menu de opciones
@@ -64,6 +63,8 @@ def printMenu():
     print("2- Contar los elementos de la Lista")
     print("3- Contar elementos filtrados por palabra clave")
     print("4- Consultar elementos a partir de dos listas")
+    print("5- Ordenar los elementos con diferentes algortimos")
+    print("6- Correr pruebas unitarias")
     print("0- Salir")
 
 def countElementsFilteredByColumn(criteria, column, lst):
@@ -98,7 +99,7 @@ def main():
         inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
         if len(inputs)>0:
             if int(inputs[0])==1: #opcion 1
-                lista = loadCSVFile("Data/test.csv") #llamar funcion cargar datos
+                lista = loadCSVFile("Data/AllMoviesDetailsCleaned.csv") #llamar funcion cargar datos
                 print("Datos cargados, ",lista['size']," elementos cargados")
             elif int(inputs[0])==2: #opcion 2
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
@@ -118,8 +119,25 @@ def main():
                     criteria =input('Ingrese el criterio de búsqueda\n')
                     counter=countElementsByCriteria(criteria,0,lista)
                     print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
+            elif int(inputs[0])==5: #opción 5, elegir tipo de ordenamiento
+                tipo=input("Ingrese 1 para selectionsort, 2 para insertion sort o 3 para shellsort: ")
+                if tipo=="1":
+                    st.selectionsort(lista,st.Compare.less)
+                if tipo=="2":
+                    st.insertionsort(lista,st.Compare.less)
+                if tipo=="3":   
+                    st.shellsort(lista,st.Compare.less)
+            elif int(inputs[0])==6: #opción 6, correr pruebas unitarias
+                numero=int(input("Ingrese 1:selection, 2:insertion, 3:shell: "))
+                if numero==1:
+                    ts.sorting.test_selectionsort(lista)
+                if numero==2:
+                    ts.sorting.test_insertionsort(lista)
+                if numero==3:
+                    ts.sorting.test_shellsort(lista)
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
+            
                 
 if __name__ == "__main__":
     main()
