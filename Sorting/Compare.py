@@ -1,10 +1,10 @@
-def less( self, element1, element2):
-        if int(element1['vote_count']) <  int(element2['vote_count']):
+def less( element1, element2):
+        if float(element1['vote_average']) <  float(element2['vote_average']):
             return True
         return False
 
-def greater( self, element1, element2):
-        if int(element1['vote_average']) >  int(element2['vote_average']):
+def greater( element1, element2):
+        if float(element1['vote_average']) >  float(element2['vote_average']):
             return True
         return False
 
